@@ -79,7 +79,7 @@ async function sendNewAptsMessage(apts: any[]) {
       chat_id: telegramConsts.chatIds[0],
       text: [
         `New Apartment Found:`,
-        `https://www.yad2.co.il/s/c/${apt.id}`,
+        `https://if.wtf/apt/${apt.id}`,
         `Price: ${apt.price}`,
       ].join('\n\n'),
     });
@@ -96,7 +96,7 @@ async function sendNewAptsMessage(apts: any[]) {
       chat_id: telegramConsts.chatIds[1],
       text: [
         `New Apartment Found:`,
-        `https://www.yad2.co.il/s/c/${apt.id}`,
+        `https://if.wtf/apt/${apt.id}`,
         `Price: ${apt.price}`,
       ].join('\n\n'),
     });
@@ -120,6 +120,16 @@ export const getApts = functions.https.onRequest(async (request, response) => {
 
   response.send(apts);
 });
+
+export const getAptsSchedule = functions.pubsub
+  .schedule('every 4 minutes')
+  .onRun(async (context) => {
+    const apts = await getNewListings();
+
+    if (apts.length) {
+      await sendNewAptsMessage(apts);
+    }
+  });
 
 export const resetData = functions.https.onRequest(
   async (request, response) => {
