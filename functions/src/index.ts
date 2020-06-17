@@ -12,7 +12,7 @@ const telegram = require('telegram-bot-api');
 //
 // export default [
 //   {
-//     to: ['12345678'],
+//     to: ['REPLACE_THIS_WITH_CHAT_ID'],
 //     queries: {
 //       'buy-4-4':
 //         'https://www.yad2.co.il/api/pre-load/getFeedIndex/realestate/forsale?area=48&property=3&rooms=4-4&price=-2000000-2500000&compact-req=1&forceLdLoad=true',
@@ -27,11 +27,11 @@ const telegram = require('telegram-bot-api');
 // telegramConsts should look like:
 //
 // export default {
-//   token: '876543234:AAGaslkmdOKRGdmkmsadlm12dasd',
+//   token: 'REPLACE_THIS_WITH_TOKEN',
 // };
 //
-// to get a token, message @BotFather in Telegram
-// to get a chat id, message @get_id_bot
+// to get a TOKEN, message @BotFather in Telegram
+// to get a CHAT ID, message @get_id_bot
 //
 import telegramConsts from './telegram-consts';
 import queries from './queries';
